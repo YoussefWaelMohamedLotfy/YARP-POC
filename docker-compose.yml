@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  backend:
+    image: ${DOCKER_REGISTRY-}backend
+    build:
+      context: .
+      dockerfile: src/Backend/Dockerfile
+
+  yarp-proxy:
+    image: ${DOCKER_REGISTRY-}yarpproxy
+    build:
+      context: .
+      dockerfile: src/YARP-Proxy/Dockerfile
+
+  consul:
+    image: consul
