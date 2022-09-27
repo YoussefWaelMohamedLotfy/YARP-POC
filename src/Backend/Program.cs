@@ -16,9 +16,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/", () =>
+app.MapGet("/", async context =>
 {
-    return "Hello World!";
+    var requestID = context.Request.Headers["X-Request-Id"];
+    await context.Response.WriteAsync($"Hello Backend - Request ID: {requestID}");
 });
 
 app.Run();
