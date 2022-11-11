@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ConfigureEndpointDefaults(o => o.Protocols = HttpProtocols.Http1AndHttp2AndHttp3);
+    options.ConfigureHttpsDefaults(o => o.AllowAnyClientCertificate());
 });
 
 builder.Services.AddReverseProxy()
